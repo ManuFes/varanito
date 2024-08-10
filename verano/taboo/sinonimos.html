@@ -16,9 +16,10 @@
     <?php
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $palabra = $_POST['palabra'];
+        $idioma = $_GET['idioma'];
 
-        function obtenerSinonimos($palabra) {
-            $filePath = 'palabras/sinonimos_SPA.csv'; // Ruta al archivo CSV
+        function obtenerSinonimos($palabra, $idioma) {
+            $filePath = $idioma === 'ITA' ? 'palabras/sinonimos_ITA.csv' : 'palabras/sinonimos_SPA.csv';
 
             if (!file_exists($filePath)) {
                 echo "El archivo CSV no existe.";
@@ -36,7 +37,7 @@
             return null;
         }
 
-        $sinonimos = obtenerSinonimos($palabra);
+        $sinonimos = obtenerSinonimos($palabra, $idioma);
 
         echo "<h2>Sinónimos de '$palabra':</h2>";
         if ($sinonimos) {

@@ -4,12 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Seleccionar Idioma</title>
+    <script>
+        function seleccionarIdioma(idioma) {
+            localStorage.setItem('idioma', idioma);
+            window.location.href = 'sinonimos.html'; // Redirige a la página de búsqueda
+        }
+    </script>
 </head>
 <body>
-    <h1>Selecciona el idioma</h1>
-    <form action="sinonimos.html" method="get">
-        <button type="button" onclick="cargarDatos('SPA');">Español</button>
-        <button type="button" onclick="cargarDatos('ITA');">Italiano</button>
-    </form>
+    <h1>Seleccionar Idioma</h1>
+    <button onclick="seleccionarIdioma('SPA')">Español</button>
+    <button onclick="seleccionarIdioma('ITA')">Italiano</button>
 </body>
 </html>

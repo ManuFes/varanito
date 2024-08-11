@@ -5,239 +5,408 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Buscar Sinónimos</title>
     <script>
-      // Aquí están los sinónimos en italiano
-      const sinonimos_ITA = {
-        amore: ["affetto", "passione", "adorazione"],
-        bello: ["carino", "affascinante", "gradevole"],
-        speranza: ["aspettativa", "illusione", "attesa"],
-        felice: ["contento", "allegro", "gioioso"],
-        triste: ["infelice", "malinconico", "depresso"],
-        forza: ["vigore", "potenza", "energia"],
-        paura: ["timore", "terrore", "ansia"],
-        vita: ["esistenza", "anima", "essenza"],
-        morte: ["decesso", "fine", "trapasso"],
-        giorno: ["diurno", "luce", "aurora"],
-        notte: ["oscurità", "tenebra", "buio"],
-        felicità: ["gioia", "allegria", "beatitudine"],
-        dolore: ["sofferenza", "pena", "tormento"],
-        pace: ["tranquillità", "serenità", "calma"],
-        guerra: ["conflitto", "battaglia", "lotta"],
-        amico: ["compagno", "collega", "alleato"],
-        nemico: ["avversario", "rivale", "oppositore"],
-        amorevole: ["affettuoso", "gentile", "premuroso"],
-        odio: ["rancore", "antipatia", "disprezzo"],
-        caldo: ["bollente", "torrido", "afoso"],
-        freddo: ["gelido", "glaciale", "rigido"],
-        ricco: ["benestante", "facoltoso", "agiato"],
-        povero: ["indigente", "bisognoso", "miserabile"],
-        veloce: ["rapido", "svelto", "celere"],
-        lento: ["tardo", "pigro", "indolente"],
-        cattivo: ["malvagio", "crudele", "spietato"],
-        forte: ["robusto", "vigoroso", "potente"],
-        debole: ["fragile", "esile", "tenue"],
-        coraggio: ["audacia", "valore", "ardimento"],
-        successo: ["trionfo", "vittoria", "realizzazione"],
-        fallimento: ["sconfitta", "insuccesso", "disastro"],
-        libertà: ["indipendenza", "autonomia", "emancipazione"],
-        prigionia: ["detenzione", "reclusione", "incarcerazione"],
-        intelligente: ["astuto", "sagace", "acuto"],
-        stupido: ["idiota", "sciocco", "imbecille"],
-        giovane: ["adolescente", "ragazzo", "fanciullo"],
-        anziano: ["vecchio", "adulto", "maturo"],
-        brutto: ["sgradevole", "orrendo", "spiacevole"],
-        felice: ["lieto", "raggiante", "euforico"],
-        paura: ["inquietudine", "sospetto", "preoccupazione"],
-        freddo: ["brivido", "frigido", "algido"],
-        ricco: ["lussuoso", "opulento", "magnate"],
-        lento: ["ritardato", "languido", "ponderato"],
-        forza: ["energia", "grinta", "intensità"],
-        triste: ["affranto", "lacrimoso", "addolorato"],
-        caldo: ["scottante", "infuocato", "ardente"],
-        amore: ["tenerezza", "dedizione", "passione"],
-        bello: ["radioso", "incantevole", "meraviglioso"],
-        guerra: ["ostilità", "assedio"],
-        pace: ["armonia", "accordo", "serenità"],
-        amico: ["confidente", "compagno"],
-        nemico: ["antagonista", "ostile", "detrattore"],
-        veloce: ["fulmineo", "istantaneo", "celere"],
-        lento: ["ritardatario", "ponderato"],
-        coraggio: ["temerarietà", "valoroso"],
-        intelligente: ["saggio", "intuitivo", "brillante"],
-        stupido: ["cretino", "ottuso", "stolto"],
-        giovane: ["bambino", "infante", "giovincello"],
-        anziano: ["senior", "veterano", "geriatrico"],
-        forte: ["tenace", "resistente", "possente"],
-        debole: ["esitante", "vacillante", "vulnerabile"],
-        dolore: ["agonia", "patimento", "lacerazione"],
-        odio: ["avversione", "disgusto", "repulsione"],
-        libertà: ["autonomia", "licenza", "scioltezza"],
-        prigionia: ["carcere", "segregazione", "incatenamento"],
-        successo: ["prosperità", "avanzamento", "progresso"],
-        fallimento: ["caduta", "disfatta", "rovina"],
-        giorno: ["mattino", "aurora", "diurno"],
-        notte: ["crepuscolo", "oscurità", "tenebra"],
-      };
+                  // Aquí están los sinónimos en italiano
+                const sinonimos_ITA = {
+                    amore: ["affetto", "passione", "adorazione"],
+                    bello: ["carino", "affascinante", "gradevole"],
+                    speranza: ["aspettativa", "illusione", "attesa"],
+                    felice: ["contento", "allegro", "gioioso"],
+                    triste: ["infelice", "malinconico", "depresso"],
+                    forza: ["vigore", "potenza", "energia"],
+                    paura: ["timore", "terrore", "ansia"],
+                    vita: ["esistenza", "anima", "essenza"],
+                    morte: ["decesso", "fine", "trapasso"],
+                    giorno: ["diurno", "luce", "aurora"],
+                    notte: ["oscurità", "tenebra", "buio"],
+                    felicità: ["gioia", "allegria", "beatitudine"],
+                    dolore: ["sofferenza", "pena", "tormento"],
+                    pace: ["tranquillità", "serenità", "calma"],
+                    guerra: ["conflitto", "battaglia", "lotta"],
+                    amico: ["compagno", "collega", "alleato"],
+                    nemico: ["avversario", "rivale", "oppositore"],
+                    amorevole: ["affettuoso", "gentile", "premuroso"],
+                    odio: ["rancore", "antipatia", "disprezzo"],
+                    caldo: ["bollente", "torrido", "afoso"],
+                    freddo: ["gelido", "glaciale", "rigido"],
+                    ricco: ["benestante", "facoltoso", "agiato"],
+                    povero: ["indigente", "bisognoso", "miserabile"],
+                    veloce: ["rapido", "svelto", "celere"],
+                    lento: ["tardo", "pigro", "indolente"],
+                    cattivo: ["malvagio", "crudele", "spietato"],
+                    forte: ["robusto", "vigoroso", "potente"],
+                    debole: ["fragile", "esile", "tenue"],
+                    coraggio: ["audacia", "valore", "ardimento"],
+                    successo: ["trionfo", "vittoria", "realizzazione"],
+                    fallimento: ["sconfitta", "insuccesso", "disastro"],
+                    libertà: ["indipendenza", "autonomia", "emancipazione"],
+                    prigionia: ["detenzione", "reclusione", "incarcerazione"],
+                    intelligente: ["astuto", "sagace", "acuto"],
+                    stupido: ["idiota", "sciocco", "imbecille"],
+                    giovane: ["adolescente", "ragazzo", "fanciullo"],
+                    anziano: ["vecchio", "adulto", "maturo"],
+                    brutto: ["sgradevole", "orrendo", "spiacevole"],
+                    felice: ["lieto", "raggiante", "euforico"],
+                    paura: ["inquietudine", "sospetto", "preoccupazione"],
+                    freddo: ["brivido", "frigido", "algido"],
+                    ricco: ["lussuoso", "opulento", "magnate"],
+                    lento: ["ritardato", "languido", "ponderato"],
+                    forza: ["energia", "grinta", "intensità"],
+                    triste: ["affranto", "lacrimoso", "addolorato"],
+                    caldo: ["scottante", "infuocato", "ardente"],
+                    amore: ["tenerezza", "dedizione", "passione"],
+                    bello: ["radioso", "incantevole", "meraviglioso"],
+                    guerra: ["ostilità", "assedio"],
+                    pace: ["armonia", "accordo", "serenità"],
+                    amico: ["confidente", "compagno"],
+                    nemico: ["antagonista", "ostile", "detrattore"],
+                    veloce: ["fulmineo", "istantaneo", "celere"],
+                    lento: ["ritardatario", "ponderato"],
+                    coraggio: ["temerarietà", "valoroso"],
+                    intelligente: ["saggio", "intuitivo", "brillante"],
+                    stupido: ["cretino", "ottuso", "stolto"],
+                    giovane: ["bambino", "infante", "giovincello"],
+                    anziano: ["senior", "veterano", "geriatrico"],
+                    forte: ["tenace", "resistente", "possente"],
+                    debole: ["esitante", "vacillante", "vulnerabile"],
+                    dolore: ["agonia", "patimento", "lacerazione"],
+                    odio: ["avversione", "disgusto", "repulsione"],
+                    libertà: ["autonomia", "licenza", "scioltezza"],
+                    prigionia: ["carcere", "segregazione", "incatenamento"],
+                    successo: ["prosperità", "avanzamento", "progresso"],
+                    fallimento: ["caduta", "disfatta", "rovina"],
+                    giorno: ["mattino", "aurora", "diurno"],
+                    notte: ["crepuscolo", "oscurità", "tenebra"],
+                    coraggio: ["valore", "audacia", "bravura"],
+                    valore: ["coraggio", "audacia", "bravura"],
+                    audacia: ["coraggio", "valore", "bravura"],
+                    bravura: ["coraggio", "valore", "audacia"],
 
-      // Aquí están los sinónimos en español
-      const sinonimos_SPA = {
-        amor: ["afecto", "pasión", "adoración"],
-        afecto: ["amor", "pasión", "adoración"],
-        pasión: ["amor", "afecto", "adoración"],
-        adoración: ["amor", "afecto", "pasión"],
-        bello: ["bonito", "hermoso", "atractivo"],
-        bonito: ["bello", "hermoso", "atractivo"],
-        hermoso: ["bello", "bonito", "atractivo"],
-        atractivo: ["bello", "bonito", "hermoso"],
-        esperanza: ["expectativa", "ilusión", "espera"],
-        expectativa: ["esperanza", "ilusión", "espera"],
-        ilusión: ["esperanza", "expectativa", "espera"],
-        espera: ["esperanza", "expectativa", "ilusión"],
-        feliz: ["contento", "alegre", "gozoso"],
-        contento: ["feliz", "alegre", "gozoso"],
-        alegre: ["feliz", "contento", "gozoso"],
-        gozoso: ["feliz", "contento", "alegre"],
-        triste: ["infeliz", "melancólico", "deprimido"],
-        infeliz: ["triste", "melancólico", "deprimido"],
-        melancólico: ["triste", "infeliz", "deprimido"],
-        deprimido: ["triste", "infeliz", "melancólico"],
-        fuerza: ["vigor", "potencia", "energía"],
-        vigor: ["fuerza", "potencia", "energía"],
-        potencia: ["fuerza", "vigor", "energía"],
-        energía: ["fuerza", "vigor", "potencia"],
-        miedo: ["temor", "terror", "ansiedad"],
-        temor: ["miedo", "terror", "ansiedad"],
-        terror: ["miedo", "temor", "ansiedad"],
-        ansiedad: ["miedo", "temor", "terror"],
-        vida: ["existencia", "alma", "esencia"],
-        existencia: ["vida", "alma", "esencia"],
-        alma: ["vida", "existencia", "esencia"],
-        esencia: ["vida", "existencia", "alma"],
-        muerte: ["fallecimiento", "fin", "deceso"],
-        fallecimiento: ["muerte", "fin", "deceso"],
-        fin: ["muerte", "fallecimiento", "deceso"],
-        deceso: ["muerte", "fallecimiento", "fin"],
-        día: ["jornada", "luz", "mañana"],
-        jornada: ["día", "luz", "mañana"],
-        luz: ["día", "jornada", "mañana"],
-        mañana: ["día", "jornada", "luz"],
-        noche: ["oscuridad", "tinieblas", "sombra"],
-        oscuridad: ["noche", "tinieblas", "sombra"],
-        tinieblas: ["noche", "oscuridad", "sombra"],
-        sombra: ["noche", "oscuridad", "tinieblas"],
-        felicidad: ["alegría", "dicha", "bienaventuranza"],
-        alegría: ["felicidad", "dicha", "bienaventuranza"],
-        dicha: ["felicidad", "alegría", "bienaventuranza"],
-        bienaventuranza: ["felicidad", "alegría", "dicha"],
-        dolor: ["sufrimiento", "pena", "tormento"],
-        sufrimiento: ["dolor", "pena", "tormento"],
-        pena: ["dolor", "sufrimiento", "tormento"],
-        tormento: ["dolor", "sufrimiento", "pena"],
-        paz: ["tranquilidad", "serenidad", "calma"],
-        tranquilidad: ["paz", "serenidad", "calma"],
-        serenidad: ["paz", "tranquilidad", "calma"],
-        calma: ["paz", "tranquilidad", "serenidad"],
-        guerra: ["conflicto", "batalla", "lucha"],
-        conflicto: ["guerra", "batalla", "lucha"],
-        batalla: ["guerra", "conflicto", "lucha"],
-        lucha: ["guerra", "conflicto", "batalla"],
-        amigo: ["compañero", "colega", "aliado"],
-        compañero: ["amigo", "colega", "aliado"],
-        colega: ["amigo", "compañero", "aliado"],
-        aliado: ["amigo", "compañero", "colega"],
-        enemigo: ["adversario", "rival", "oponente"],
-        adversario: ["enemigo", "rival", "oponente"],
-        rival: ["enemigo", "adversario", "oponente"],
-        oponente: ["enemigo", "adversario", "rival"],
-        amoroso: ["afectuoso", "cariñoso", "atento"],
-        afectuoso: ["amoroso", "cariñoso", "atento"],
-        cariñoso: ["amoroso", "afectuoso", "atento"],
-        atento: ["amoroso", "afectuoso", "cariñoso"],
-        odio: ["rencor", "antipatía", "desprecio"],
-        rencor: ["odio", "antipatía", "desprecio"],
-        antipatía: ["odio", "rencor", "desprecio"],
-        desprecio: ["odio", "rencor", "antipatía"],
-        calor: ["ardiente", "sofocante", "abrumador"],
-        ardiente: ["calor", "sofocante", "abrumador"],
-        sofocante: ["calor", "ardiente", "abrumador"],
-        abrumador: ["calor", "ardiente", "sofocante"],
-        frío: ["helado", "glacial", "riguroso"],
-        helado: ["frío", "glacial", "riguroso"],
-        glacial: ["frío", "helado", "riguroso"],
-        riguroso: ["frío", "helado", "glacial"],
-        rico: ["adinerado", "opulento", "afluente"],
-        adinerado: ["rico", "opulento", "afluente"],
-        opulento: ["rico", "adinerado", "afluente"],
-        afluente: ["rico", "adinerado", "opulento"],
-        pobre: ["necesitado", "miserable", "desafortunado"],
-        necesitado: ["pobre", "miserable", "desafortunado"],
-        miserable: ["pobre", "necesitado", "desafortunado"],
-        desafortunado: ["pobre", "necesitado", "miserable"],
-        rápido: ["veloz", "ágil", "expedito"],
-        veloz: ["rápido", "ágil", "expedito"],
-        ágil: ["rápido", "veloz", "expedito"],
-        expedito: ["rápido", "veloz", "ágil"],
-        lento: ["pausado", "perezoso", "indolente"],
-        pausado: ["lento", "perezoso", "indolente"],
-        perezoso: ["lento", "pausado", "indolente"],
-        indolente: ["lento", "pausado", "perezoso"],
-        fuerte: ["robusto", "vigoroso", "poderoso"],
-        robusto: ["fuerte", "vigoroso", "poderoso"],
-        vigoroso: ["fuerte", "robusto", "poderoso"],
-        poderoso: ["fuerte", "robusto", "vigoroso"],
-        débil: ["frágil", "vulnerable", "quebradizo"],
-        frágil: ["débil", "vulnerable", "quebradizo"],
-        vulnerable: ["débil", "frágil", "quebradizo"],
-        quebradizo: ["débil", "frágil", "vulnerable"],
-        coraje: ["valentía", "audacia", "bravura"],
-      };
+                    // Animali
+                    cane: ["cagnolino", "cucciolo", "canide"],
+                    cagnolino: ["cane", "cucciolo", "canide"],
+                    cucciolo: ["cane", "cagnolino", "canide"],
+                    canide: ["cane", "cagnolino", "cucciolo"],
 
-      // Función para cambiar el idioma del enunciado
-      function cambiarIdioma() {
-        const idioma = localStorage.getItem("idioma"); // Obtener el idioma seleccionado
-        let enunciado;
-        if (idioma === "ITA") {
-          enunciado = "Cerca sinonimi";
-        } else {
-          enunciado = "Buscar Sinónimos";
-        }
-        document.getElementById("enunciado").textContent = enunciado;
-        document.getElementById("label_palabra").textContent =
-          idioma === "ITA" ? "Inserisci una parola:" : "Introduce una palabra:";
-        document.getElementById("boton_buscar").textContent =
-          idioma === "ITA" ? "Cerca" : "Buscar";
-      }
+                    gatto: ["felino", "micino", "micio"],
+                    felino: ["gatto", "micino", "micio"],
+                    micino: ["gatto", "felino", "micio"],
+                    micio: ["gatto", "felino", "micino"],
 
-      // Función para buscar sinónimos
-      function buscarSinonimos() {
-        const palabra = document.getElementById("palabra").value.toLowerCase();
-        const idioma = localStorage.getItem("idioma"); // Obtener el idioma seleccionado
-        let sinonimos;
-        if (idioma === "ITA") {
-          sinonimos = sinonimos_ITA[palabra];
-        } else {
-          sinonimos = sinonimos_SPA[palabra];
-        }
+                    leone: ["re della savana", "felino", "carnivoro"],
+                    savana: ["leone", "felino", "carnivoro"],
+                    carnivoro: ["leone", "felino", "re della savana"],
 
-        let resultado = document.getElementById("resultado");
-        resultado.innerHTML = "";
+                    elefante: ["pachiderma", "gigante", "animale grande"],
+                    pachiderma: ["elefante", "gigante", "animale grande"],
+                    gigante: ["elefante", "pachiderma", "animale grande"],
+                    animale : ["elefante", "pachiderma", "gigante"],
 
-        if (sinonimos) {
-          resultado.innerHTML = `<h3>${
-            idioma === "ITA" ? "Sinonimi di" : "Sinónimos de"
-          } '${palabra}':</h3>`;
-          sinonimos.forEach(function (sinonimo) {
-            resultado.innerHTML += "<p>" + sinonimo + "</p>";
-          });
-        } else {
-          resultado.innerHTML = `<p>${
-            idioma === "ITA"
-              ? "Non sono stati trovati sinonimi o la parola non è presente nel file."
-              : "No se encontraron sinónimos o la palabra no está en el archivo."
-          }</p>`;
-        }
-      }
+                    // Utensili
+                    coltello: ["lama", "taglierino", "affilato"],
+                    lama: ["coltello", "taglierino", "affilato"],
+                    taglierino: ["coltello", "lama", "affilato"],
+                    affilato: ["coltello", "lama", "taglierino"],
 
-      window.onload = cambiarIdioma;
+                    forchetta: ["utensile", "posata", "punta"],
+                    utensile: ["forchetta", "posata", "punta"],
+                    posata: ["forchetta", "utensile", "punta"],
+                    punta: ["forchetta", "utensile", "posata"],
+
+                    cucchiaio: ["utensile", "mestolo", "paletta"],
+                    mestolo: ["cucchiaio", "utensile", "paletta"],
+                    paletta: ["cucchiaio", "utensile", "mestolo"],
+
+                    martello: ["mazza", "strumento", "percussore"],
+                    mazza: ["martello", "strumento", "percussore"],
+                    strumento: ["martello", "mazza", "percussore"],
+                    percussore: ["martello", "mazza", "strumento"],
+
+                    // Paesi
+                    Italia: ["italiano", "penisola italica", "stivale"],
+                    italiano: ["Italia", "penisola italica", "stivale"],
+                    italica: ["Italia", "italiano", "stivale"],
+                    stivale: ["Italia", "italiano", "penisola italica"],
+
+                    Spagna: ["spagnolo", "penisola iberica", "iberico"],
+                    spagnolo: ["Spagna", "penisola iberica", "iberico"],
+                    iberica: ["Spagna", "spagnolo", "iberico"],
+                    iberico: ["Spagna", "spagnolo", "penisola iberica"],
+
+                    Francia: ["francese", "gallico", "paese"],
+                    francese: ["Francia", "gallico", "paese"],
+                    gallico: ["Francia", "francese", "paese"],
+                    paese: ["Francia", "francese", "gallico"],
+
+                    Germania: ["tedesco", "teutone", "paese"],
+                    tedesco: ["Germania", "teutone", "paese"],
+                    teutone: ["Germania", "tedesco", "paese"],
+                    paese: ["Germania", "tedesco", "teutone"],
+
+                    // Altri elementi
+                    macchina: ["automobile", "veicolo", "carro"],
+                    automobile: ["macchina", "veicolo", "carro"],
+                    veicolo: ["macchina", "automobile", "carro"],
+                    carro: ["macchina", "automobile", "veicolo"],
+
+                    casa: ["dimora", "abitazione", "residenza"],
+                    dimora: ["casa", "abitazione", "residenza"],
+                    abitazione: ["casa", "dimora", "residenza"],
+                    residenza: ["casa", "dimora", "abitazione"],
+
+                    libro: ["volume", "testo", "opera"],
+                    volume: ["libro", "testo", "opera"],
+                    testo: ["libro", "volume", "opera"],
+                    opera: ["libro", "volume", "testo"],
+
+                    città: ["metropoli", "urbe", "municipio"],
+                    metropoli: ["città", "urbe", "municipio"],
+                    urbe: ["città", "metropoli", "municipio"],
+                    municipio: ["città", "metropoli", "urbe"]
+                };
+
+                  // Aquí están los sinónimos en español
+                const sinonimos_SPA = {
+                    amor: ["afecto", "pasión", "adoración"],
+                    afecto: ["amor", "pasión", "adoración"],
+                    pasión: ["amor", "afecto", "adoración"],
+                    adoración: ["amor", "afecto", "pasión"],
+                    bello: ["bonito", "hermoso", "atractivo"],
+                    bonito: ["bello", "hermoso", "atractivo"],
+                    hermoso: ["bello", "bonito", "atractivo"],
+                    atractivo: ["bello", "bonito", "hermoso"],
+                    esperanza: ["expectativa", "ilusión", "espera"],
+                    expectativa: ["esperanza", "ilusión", "espera"],
+                    ilusión: ["esperanza", "expectativa", "espera"],
+                    espera: ["esperanza", "expectativa", "ilusión"],
+                    feliz: ["contento", "alegre", "gozoso"],
+                    contento: ["feliz", "alegre", "gozoso"],
+                    alegre: ["feliz", "contento", "gozoso"],
+                    gozoso: ["feliz", "contento", "alegre"],
+                    triste: ["infeliz", "melancólico", "deprimido"],
+                    infeliz: ["triste", "melancólico", "deprimido"],
+                    melancólico: ["triste", "infeliz", "deprimido"],
+                    deprimido: ["triste", "infeliz", "melancólico"],
+                    fuerza: ["vigor", "potencia", "energía"],
+                    vigor: ["fuerza", "potencia", "energía"],
+                    potencia: ["fuerza", "vigor", "energía"],
+                    energía: ["fuerza", "vigor", "potencia"],
+                    miedo: ["temor", "terror", "ansiedad"],
+                    temor: ["miedo", "terror", "ansiedad"],
+                    terror: ["miedo", "temor", "ansiedad"],
+                    ansiedad: ["miedo", "temor", "terror"],
+                    vida: ["existencia", "alma", "esencia"],
+                    existencia: ["vida", "alma", "esencia"],
+                    alma: ["vida", "existencia", "esencia"],
+                    esencia: ["vida", "existencia", "alma"],
+                    muerte: ["fallecimiento", "fin", "deceso"],
+                    fallecimiento: ["muerte", "fin", "deceso"],
+                    fin: ["muerte", "fallecimiento", "deceso"],
+                    deceso: ["muerte", "fallecimiento", "fin"],
+                    día: ["jornada", "luz", "mañana"],
+                    jornada: ["día", "luz", "mañana"],
+                    luz: ["día", "jornada", "mañana"],
+                    mañana: ["día", "jornada", "luz"],
+                    noche: ["oscuridad", "tinieblas", "sombra"],
+                    oscuridad: ["noche", "tinieblas", "sombra"],
+                    tinieblas: ["noche", "oscuridad", "sombra"],
+                    sombra: ["noche", "oscuridad", "tinieblas"],
+                    felicidad: ["alegría", "dicha", "bienaventuranza"],
+                    alegría: ["felicidad", "dicha", "bienaventuranza"],
+                    dicha: ["felicidad", "alegría", "bienaventuranza"],
+                    bienaventuranza: ["felicidad", "alegría", "dicha"],
+                    dolor: ["sufrimiento", "pena", "tormento"],
+                    sufrimiento: ["dolor", "pena", "tormento"],
+                    pena: ["dolor", "sufrimiento", "tormento"],
+                    tormento: ["dolor", "sufrimiento", "pena"],
+                    paz: ["tranquilidad", "serenidad", "calma"],
+                    tranquilidad: ["paz", "serenidad", "calma"],
+                    serenidad: ["paz", "tranquilidad", "calma"],
+                    calma: ["paz", "tranquilidad", "serenidad"],
+                    guerra: ["conflicto", "batalla", "lucha"],
+                    conflicto: ["guerra", "batalla", "lucha"],
+                    batalla: ["guerra", "conflicto", "lucha"],
+                    lucha: ["guerra", "conflicto", "batalla"],
+                    amigo: ["compañero", "colega", "aliado"],
+                    compañero: ["amigo", "colega", "aliado"],
+                    colega: ["amigo", "compañero", "aliado"],
+                    aliado: ["amigo", "compañero", "colega"],
+                    enemigo: ["adversario", "rival", "oponente"],
+                    adversario: ["enemigo", "rival", "oponente"],
+                    rival: ["enemigo", "adversario", "oponente"],
+                    oponente: ["enemigo", "adversario", "rival"],
+                    amoroso: ["afectuoso", "cariñoso", "atento"],
+                    afectuoso: ["amoroso", "cariñoso", "atento"],
+                    cariñoso: ["amoroso", "afectuoso", "atento"],
+                    atento: ["amoroso", "afectuoso", "cariñoso"],
+                    odio: ["rencor", "antipatía", "desprecio"],
+                    rencor: ["odio", "antipatía", "desprecio"],
+                    antipatía: ["odio", "rencor", "desprecio"],
+                    desprecio: ["odio", "rencor", "antipatía"],
+                    calor: ["ardiente", "sofocante", "abrumador"],
+                    ardiente: ["calor", "sofocante", "abrumador"],
+                    sofocante: ["calor", "ardiente", "abrumador"],
+                    abrumador: ["calor", "ardiente", "sofocante"],
+                    frío: ["helado", "glacial", "riguroso"],
+                    helado: ["frío", "glacial", "riguroso"],
+                    glacial: ["frío", "helado", "riguroso"],
+                    riguroso: ["frío", "helado", "glacial"],
+                    rico: ["adinerado", "opulento", "afluente"],
+                    adinerado: ["rico", "opulento", "afluente"],
+                    opulento: ["rico", "adinerado", "afluente"],
+                    afluente: ["rico", "adinerado", "opulento"],
+                    pobre: ["necesitado", "miserable", "desafortunado"],
+                    necesitado: ["pobre", "miserable", "desafortunado"],
+                    miserable: ["pobre", "necesitado", "desafortunado"],
+                    desafortunado: ["pobre", "necesitado", "miserable"],
+                    rápido: ["veloz", "ágil", "expedito"],
+                    veloz: ["rápido", "ágil", "expedito"],
+                    ágil: ["rápido", "veloz", "expedito"],
+                    expedito: ["rápido", "veloz", "ágil"],
+                    lento: ["pausado", "perezoso", "indolente"],
+                    pausado: ["lento", "perezoso", "indolente"],
+                    perezoso: ["lento", "pausado", "indolente"],
+                    indolente: ["lento", "pausado", "perezoso"],
+                    fuerte: ["robusto", "vigoroso", "poderoso"],
+                    robusto: ["fuerte", "vigoroso", "poderoso"],
+                    vigoroso: ["fuerte", "robusto", "poderoso"],
+                    poderoso: ["fuerte", "robusto", "vigoroso"],
+                    débil: ["frágil", "vulnerable", "quebradizo"],
+                    frágil: ["débil", "vulnerable", "quebradizo"],
+                    vulnerable: ["débil", "frágil", "quebradizo"],
+                    quebradizo: ["débil", "frágil", "vulnerable"],
+                    coraje: ["valentía", "audacia", "bravura"],
+                    coraje: ["valentía", "audacia", "bravura"],
+                    valentía: ["coraje", "audacia", "bravura"],
+                    audacia: ["coraje", "valentía", "bravura"],
+                    bravura: ["coraje", "valentía", "audacia"],
+
+                    // Animales
+                    perro: ["can", "cachorro", "canino"],
+                    can: ["perro", "cachorro", "canino"],
+                    cachorro: ["perro", "can", "canino"],
+                    canino: ["perro", "can", "cachorro"],
+                                    
+                    gato: ["felino", "minino", "michino"],
+                    felino: ["gato", "minino", "michino"],
+                    minino: ["gato", "felino", "michino"],
+                    michino: ["gato", "felino", "minino"],
+                                    
+                    león: ["rey de la selva", "felino", "carnívoro"],
+                    rey: ["león", "felino", "carnívoro"],
+                    carnívoro: ["león", "felino", "rey de la selva"],
+                                    
+                    elefante: ["paquidermo", "gigante", "animal grande"],
+                    paquidermo: ["elefante", "gigante", "animal grande"],
+                    gigante: ["elefante", "paquidermo", "animal grande"],
+                    animal : ["elefante", "paquidermo", "gigante"],
+                                    
+                    // Utensilios
+                    cuchillo: ["navaja", "filo", "hoja"],
+                    navaja: ["cuchillo", "filo", "hoja"],
+                    filo: ["cuchillo", "navaja", "hoja"],
+                    hoja: ["cuchillo", "navaja", "filo"],
+                                    
+                    tenedor: ["utensilio", "pincho", "cubierto"],
+                    utensilio: ["tenedor", "pincho", "cubierto"],
+                    pincho: ["tenedor", "utensilio", "cubierto"],
+                    cubierto: ["tenedor", "utensilio", "pincho"],
+                                    
+                    cuchara: ["utensilio", "pala", "cazo"],
+                    pala: ["cuchara", "utensilio", "cazo"],
+                    cazo: ["cuchara", "utensilio", "pala"],
+                                    
+                    martillo: ["mazo", "herramienta", "percutor"],
+                    mazo: ["martillo", "herramienta", "percutor"],
+                    herramienta: ["martillo", "mazo", "percutor"],
+                    percutor: ["martillo", "mazo", "herramienta"],
+                                    
+                    // Países
+                    España: ["España", "español", "península ibérica"],
+                    español: ["España", "español", "península ibérica"],
+                    península: ["España", "español", "España"],
+                                    
+                    Italia: ["Italia", "italiano", "península itálica"],
+                    italiano: ["Italia", "italiano", "península itálica"],
+                    itálica: ["Italia", "italiano", "Italia"],
+                                    
+                    Francia: ["Francia", "francés", "galia"],
+                    francés: ["Francia", "galia", "Francia"],
+                    galia: ["Francia", "francés", "Francia"],
+                                    
+                    Alemania: ["Alemania", "alemán", "teutón"],
+                    alemán: ["Alemania", "teutón", "Alemania"],
+                    teutón: ["Alemania", "alemán", "Alemania"],
+                                    
+                    // Otros elementos
+                    coche: ["automóvil", "vehículo", "carro"],
+                    automóvil: ["coche", "vehículo", "carro"],
+                    vehículo: ["coche", "automóvil", "carro"],
+                    carro: ["coche", "automóvil", "vehículo"],
+                                    
+                    casa: ["hogar", "vivienda", "morada"],
+                    hogar: ["casa", "vivienda", "morada"],
+                    vivienda: ["casa", "hogar", "morada"],
+                    morada: ["casa", "hogar", "vivienda"],
+                                    
+                    libro: ["tomo", "volumen", "texto"],
+                    tomo: ["libro", "volumen", "texto"],
+                    volumen: ["libro", "tomo", "texto"],
+                    texto: ["libro", "tomo", "volumen"],
+                                    
+                    ciudad: ["metrópoli", "urbe", "municipio"],
+                    metrópoli: ["ciudad", "urbe", "municipio"],
+                    urbe: ["ciudad", "metrópoli", "municipio"],
+                    municipio: ["ciudad", "metrópoli", "urbe"]
+                                    
+                            };
+
+                  // Función para cambiar el idioma del enunciado
+                function cambiarIdioma() {
+                    const idioma = localStorage.getItem("idioma"); // Obtener el idioma seleccionado
+                    let enunciado;
+                    if (idioma === "ITA") {
+                      enunciado = "Cerca sinonimi";
+                    } else {
+                      enunciado = "Buscar Sinónimos";
+                    }
+                    document.getElementById("enunciado").textContent = enunciado;
+                    document.getElementById("label_palabra").textContent =
+                      idioma === "ITA" ? "Inserisci una parola:" : "Introduce una palabra:";
+                    document.getElementById("boton_buscar").textContent =
+                      idioma === "ITA" ? "Cerca" : "Buscar";
+                  }
+
+                  // Función para buscar sinónimos
+                  function buscarSinonimos() {
+                    const palabra = document.getElementById("palabra").value.toLowerCase();
+                    const idioma = localStorage.getItem("idioma"); // Obtener el idioma seleccionado
+                    let sinonimos;
+                    if (idioma === "ITA") {
+                      sinonimos = sinonimos_ITA[palabra];
+                    } else {
+                      sinonimos = sinonimos_SPA[palabra];
+                    }
+
+                    let resultado = document.getElementById("resultado");
+                    resultado.innerHTML = "";
+
+                    if (sinonimos) {
+                      resultado.innerHTML = `<h3>${
+                        idioma === "ITA" ? "Sinonimi di" : "Sinónimos de"
+                      } '${palabra}':</h3>`;
+                      sinonimos.forEach(function (sinonimo) {
+                        resultado.innerHTML += "<p>" + sinonimo + "</p>";
+                      });
+                    } else {
+                      resultado.innerHTML = `<p>${
+                        idioma === "ITA"
+                          ? "Non sono stati trovati sinonimi o la parola non è presente nel file."
+                          : "No se encontraron sinónimos o la palabra no está en el archivo."
+                      }</p>`;
+                    }
+                  }
+
+                  window.onload = cambiarIdioma;
     </script>
   </head>
   <body>

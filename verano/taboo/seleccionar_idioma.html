@@ -6,14 +6,10 @@
     <title>Seleccionar Idioma</title>
 </head>
 <body>
-    <h1>Seleccione el idioma</h1>
+    <h1>Selecciona el idioma</h1>
     <form action="sinonimos.html" method="get">
-        <label for="idioma">Idioma:</label>
-        <select name="idioma" id="idioma" required>
-            <option value="SPA">Español</option>
-            <option value="ITA">Italiano</option>
-        </select>
-        <button type="submit">Seleccionar</button>
+        <button type="button" onclick="cargarDatos('SPA');">Español</button>
+        <button type="button" onclick="cargarDatos('ITA');">Italiano</button>
     </form>
 </body>
 </html>

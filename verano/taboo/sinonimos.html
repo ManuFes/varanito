@@ -132,6 +132,19 @@
             "notte": ["crepuscolo", "oscurità", "tenebra"]
         };
 
+         // Función para cambiar el idioma del enunciado
+        function cambiarIdioma() {
+            const idioma = localStorage.getItem('idioma'); // Obtener el idioma seleccionado
+            let enunciado;
+            if (idioma === 'ITA') {
+                enunciado = 'Cerca sinonimi';
+            } else {
+                enunciado = 'Buscar Sinónimos';
+            }
+            document.getElementById('enunciado').textContent = enunciado;
+        }
+
+        // Función para buscar sinónimos
 
         function buscarSinonimos() {
             const palabra = document.getElementById("palabra").value.toLowerCase();

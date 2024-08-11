@@ -142,38 +142,46 @@
                 enunciado = 'Buscar Sinónimos';
             }
             document.getElementById('enunciado').textContent = enunciado;
+            document.getElementById('label_palabra').textContent = idioma === 'ITA' ? 'Inserisci una parola:' : 'Introduce una palabra:';
+            document.getElementById('boton_buscar').textContent = idioma === 'ITA' ? 'Cerca' : 'Buscar';
         }
 
         // Función para buscar sinónimos
 
         function buscarSinonimos() {
-            const palabra = document.getElementById("palabra").value.toLowerCase();
-            const idioma = new URLSearchParams(window.location.search).get("idioma");
-            let sinonimos = [];
-
-            if (idioma === "SPA") {
-                sinonimos = sinonimos_SPA[palabra] || [];
-            } else if (idioma === "ITA") {
-                sinonimos = sinonimos_ITA[palabra] || [];
+            const palabra = document.getElementById('palabra').value.toLowerCase();
+            const idioma = localStorage.getItem('idioma'); // Obtener el idioma seleccionado
+            let sinonimos;
+            if (idioma === 'ITA') {
+                sinonimos = sinonimos_ITA[palabra];
+            } else {
+                sinonimos = sinonimos_SPA[palabra];
             }
 
-            const resultadoDiv = document.getElementById("resultado");
-            if (sinonimos.length > 0) {
-                resultadoDiv.innerHTML = `<p>Sinónimos de '${palabra}':</p><ul>` +
-                    sinonimos.map(s => `<li>${s}</li>`).join('') + '</ul>';
+            let resultado = document.getElementById('resultado');
+            resultado.innerHTML = "";
+
+            if (sinonimos) {
+                resultado.innerHTML = `<h3>${idioma === 'ITA' ? 'Sinonimi di' : 'Sinónimos de'} '${palabra}':</h3>`;
+                sinonimos.forEach(function (sinonimo) {
+                    resultado.innerHTML += "<p>" + sinonimo + "</p>";
+                });
             } else {
-                resultadoDiv.innerHTML = `<p>No se encontraron sinónimos o la palabra no está en el archivo.</p>`;
+                resultado.innerHTML = `<p>${idioma === 'ITA' ? 'Non sono stati trovati sinonimi o la parola non è presente nel file.' : 'No se encontraron sinónimos o la palabra no está en el archivo.'}</p>`;
             }
         }
+
+        window.onload = cambiarIdioma;
+
     </script>
 </head>
 
 <body>
-    <h1>Buscar Sinónimos</h1>
-    <form onsubmit="buscarSinonimos(); return false;">
-        <label for="palabra">Introduce una palabra: </label>
-        <input type="text" id="palabra" name="palabra" required>
-        <button type="submit">Buscar</button>
+    <h1 id="enunciado">Buscar Sinónimos</h1>
+    <form onsubmit="event.preventDefault(); buscarSinonimos();">
+        <label id="label_palabra" for="palabra">Introduce una palabra:</label>
+        <input type="text" id="palabra" required>
+        <button id="boton_buscar" type="submit">Buscar</button>
     </form>
     <div id="resultado"></div>
 </body>
